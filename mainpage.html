@@ -92,20 +92,26 @@
 	        time = new String(time);    // stringify time
 	        return new Array(Math.max(length - time.length + 1, 0)).join("0") + time;
 	    }
+	    i = 1 
 	    $("#next").click(function(){
+	    	i += 1
 			if(timeUpdate) clearInterval(timeUpdate);
         	setStopwatch(0,0,0,0)
-	    	$("#image").html('<img style="border:1px solid black" src="demo2.jpg">');
+        	if (i>3) i = 3
+	    	$("#image").html('<img style="border:1px solid black" src="demo'+i+'.jpg">');
     		document.getElementById("stop_watch").className="hide";
     		document.getElementById("image").className="show"; 
 			$("#option1").html("");
 			$("#option2").html("");
 			setTimeout(function(){ document.getElementById("image").className="hide"; document.getElementById("stop_watch").className="show"; updateTime(0,0,0,0); }, 4000);
 		});
+		
 		$("#previous").click(function(){
+			i--
 			if(timeUpdate) clearInterval(timeUpdate);
         	setStopwatch(0,0,0,0)
-	    	$("#image").html('<img style="border:1px solid black" src="demo1.jpg">');
+        	if(i<1) i = 1
+	    	$("#image").html('<img style="border:1px solid black" src="demo'+i+'.jpg">');
     		document.getElementById("stop_watch").className="hide";
     		document.getElementById("image").className="show"; 
 			$("#option1").html("");
